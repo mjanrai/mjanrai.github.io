@@ -1,0 +1,17 @@
+$Title = "Display image with PowerShell example"
+#$ImageFileName = "image.png"
+
+
+$ImageFileInfo = Get-Item -Path C:\pikachu.png
+$Image = [Drawing.Image]::FromFile($ImageFileInfo)
+
+$PictureBox = [Windows.Forms.PictureBox]::new()
+$PictureBox.Size = $Image.Size
+$PictureBox.Image = $Image
+
+$Form = [System.Windows.Forms.Form]::new()
+$Form.Text = $Title
+$Form.Size = $Image.Size
+$Form.Controls.Add($PictureBox)
+$Form.ShowDialog()
+Test-PSSessionConfigurationFile
